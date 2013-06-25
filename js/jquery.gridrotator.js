@@ -153,7 +153,9 @@
 		// if true the items will switch when hovered
 		onhover : false,
 		// ids of elements that shouldn't change
-		nochange : []
+		nochange : [],
+		// callback function when drawn
+		onDraw : function(){}
 	};
 
 	$.GridRotator.prototype = {
@@ -316,6 +318,8 @@
 			if( callback ) {
 				callback.call();
 			}
+
+			this.options.onDraw.call(this);
 
 		},
 		// set the grid rows and columns
