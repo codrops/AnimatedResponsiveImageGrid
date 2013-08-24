@@ -155,7 +155,9 @@
 		// ids of elements that shouldn't change
 		nochange : [],
 		// callback function when drawn
-		onDraw : function(){}
+		onDraw : function(){},
+		// Height to Width Ratio (Height/Width). A 0.5 ratio would be used for an image that is twice as large as it's height. Default is 1 (square images).
+		heightToWidthRatio : 1 
 	};
 
 	$.GridRotator.prototype = {
@@ -298,7 +300,7 @@
 
 					$item.css( {
 						width : j < Math.floor( gapWidth ) ? itemWidth + 1 : itemWidth,
-						height : itemWidth
+						height : Math.floor( itemWidth * this.options.heightToWidthRatio )
 					} );
 
 					if( $.inArray( idx, this.options.nochange ) !== -1 ) {
