@@ -157,7 +157,8 @@
 		// callback function when drawn
 		onDraw : function(){},
 		// Height to Width Ratio (Height/Width). A 0.5 ratio would be used for an image that is twice as large as it's height. Default is 1 (square images).
-		heightToWidthRatio : 1 
+		heightToWidthRatio : 1,
+		subImg : false
 	};
 
 	$.GridRotator.prototype = {
@@ -222,8 +223,22 @@
 			// remove images and add background-image to anchors
 			// preload the images before
 			var loaded = 0,
+				subbed = 0,
 				$imgs = this.$list.find( 'img' ),
-				count = $imgs.length;
+				count = $imgs.length,
+				subColors = ["#D92727", "#FFE433", "#0DB8B5"];
+
+
+			// Check if the substitute image is available
+			if( self.options.subImg ) {
+
+				$( '<img/>' ).error( function() {
+
+					self.options.subImg = false;
+
+				} ).attr('src', self.options.subImg);
+
+			}
 
 			$imgs.each( function() {
 
@@ -234,7 +249,8 @@
 					++loaded;
 					$img.parent().css( 'background-image', 'url(' + src + ')' );
 
-					if( loaded === count ) {
+					/*This conditional block should be moved out to remove redundancy =)*/
+					if( loaded + subbed === count ) {
 
 						$imgs.remove();
 						self.$el.removeClass( 'ri-grid-loading' );
@@ -257,9 +273,58 @@
 
 					}
 
-				} ).attr( 'src', src )
+				} ).attr( 'src', src );
+
+				// If something is wrong with the image…
+				$( '<img/>' ).error( function() {
+					
+					++subbed;
+					
+					// Are there any substitute images?
+					if( self.options.subImg ) {
+
+						$img.parent().css( 'background-image', 'url(' + self.options.subImg + ')' );
+
+					}
+					
+					else {
+
+						var color = Math.floor(Math.random() * 3)
+						$img.parent().css( 'background', subColors[color] );
+
+					}
+
+					// console.log(self.options)
+
+					/*This conditional block should be moved out to remove redundancy =)*/
+					if( loaded + subbed === count ) {
+
+						$imgs.remove();
+						self.$el.removeClass( 'ri-grid-loading' );
+						// the items
+						self.$items = self.$list.children( 'li' );
+						// make a copy of the items
+						self.$itemsCache = self.$items.clone();
+						// total number of items
+						self.itemsTotal = self.$items.length;
+						// the items that will be out of the grid
+						// actually the item's child (anchor element)
+						self.outItems= [];
+						self._layout( function() {
+							self._initEvents();
+						} );
+						// replace [options.step] items after [options.interval] time
+						// the items that go out are randomly chosen, while the ones that get in
+						// follow a "First In First Out" logic
+						self._start();
+
+					}
+
+				}	).attr( 'src', src );
+
+				
 				 
-			} );
+			} );			
 
 		},
 		_layout : function( callback ) {
