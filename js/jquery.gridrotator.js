@@ -54,16 +54,18 @@
 	};
 
 	// http://www.hardcode.nl/subcategory_1/article_317-array-shuffle-function
-	Array.prototype.shuffle = function() {
-		var i=this.length,p,t;
-		while (i--) {
-			p = Math.floor(Math.random()*i);
-			t = this[i];
-			this[i]=this[p];
-			this[p]=t;
-		}
-		return this;
-	};
+  Array.prototype.shuffle = function() {
+    if(this.length > 1) {
+      var i = this.length,p,t;
+      while (i--) {
+        p = Math.floor(Math.random()*i);
+        t = this[i];
+        this[i]=this[p];
+        this[p]=t;
+      }
+    }
+    return this;
+  };
 
 	// HTML5 PageVisibility API
 	// http://www.html5rocks.com/en/tutorials/pagevisibility/intro/
