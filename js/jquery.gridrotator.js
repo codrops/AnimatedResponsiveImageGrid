@@ -55,7 +55,7 @@
 
 	// http://www.hardcode.nl/subcategory_1/article_317-array-shuffle-function
 	Array.prototype.shuffle = function() {
-    if(p != null && t != null) {
+    if(this.length > 1) {
       var i=this.length,p,t;
       while (i--) {
         p = Math.floor(Math.random()*i);
