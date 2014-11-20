@@ -55,13 +55,15 @@
 
 	// http://www.hardcode.nl/subcategory_1/article_317-array-shuffle-function
 	Array.prototype.shuffle = function() {
-		var i=this.length,p,t;
-		while (i--) {
-			p = Math.floor(Math.random()*i);
-			t = this[i];
-			this[i]=this[p];
-			this[p]=t;
-		}
+    if(p != null && t != null) {
+      var i=this.length,p,t;
+      while (i--) {
+        p = Math.floor(Math.random()*i);
+        t = this[i];
+        this[i]=this[p];
+        this[p]=t;
+      }
+    }
 		return this;
 	};
 
