@@ -1,0 +1,18 @@
+{
+  "name": "AnimatedResponsiveImageGrid",
+  "version": "1.0.0",
+  "homepage": "https://github.com/codrops/AnimatedResponsiveImageGrid",
+  "authors": [
+    "Pedro Botelho"
+  ],
+  "description": "A jQuery plugin for creating a responsive image grid that will switch images using different animations and timings.",
+  "main": "js/jquery.gridrotator.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
