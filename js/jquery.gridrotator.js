@@ -57,7 +57,7 @@
 	function shuffle(a) {
 		var i=a.length,p,t;
 		while (i--) {
-			p = Math.floor(Math.random()*i);
+			p = Math.floor(Math.random()*this.length);
 			t = a[i];
 			a[i]=a[p];
 			a[p]=t;
