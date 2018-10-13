@@ -6,16 +6,16 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+	padding: 2px;
+	margin: 1px;
 }
 
 /* General Demo Style */
 body {
-	font-family: 'Lato', 'Myriad Pro','Trebuchet MS', sans-serif;
+	font-family: 'Lato', 'Myriad Pro','Trebuchet MS', serif;
 	background: #f9f9f9 url(../images/bg.jpg) repeat top left;
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 16px;
 	color: #333;
 	overflow: scroll;
 	overflow-x: hidden; 
@@ -40,13 +40,13 @@ a img {
 	padding: 20px 10px 10px 10px;
 	position: relative;
 	display: block;
-    text-align: center;
+    	text-align: center;
 	text-shadow: 0 1px 1px rgba(255,255,255,0.7);
 }
 
 .codrops-header h1,
 .codrops-header-special h1{
-	font-size: 26px;
+	font-size: 24px;
 	line-height: 26px;
 	margin: 0;
 	position: relative;
@@ -72,7 +72,7 @@ a img {
 	font-size: 11px;
 	background: #fff;
 	background: rgba(255, 255, 255, 0.8);
-	text-transform: uppercase;
+	text-transform: capitalize;
 	z-index: 9999;
 	position: relative;
 	box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
